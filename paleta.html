@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>React złożone komponenty</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<style>
+    #kontener {
+        padding: 50px;
+        background-color: #FFF;
+    }
+
+</style>
+</head>
+<body>
+    <script type="text/babel">
+        let destination = document.querySelector("#kontener");
+
+        class Square extends React.Component{
+            render(){
+                let squareStyle = {
+                    height: 150,
+                    backgroundColor: this.props.color1
+                }
+                return(
+                    <div style={squareStyle}>
+                    </div>
+                );
+            }
+        }
+        class Label extends React.Component{
+            render(){
+                let labelStyle = {
+                    fontSize: 10,
+                    padding: 10,
+                    margin: 0,
+                    fontFamily: "sans-serif",
+                    color: "#333",
+                    fontWeight: "bold"
+                }
+                return(
+                
+                <div style={labelStyle}>
+                    <p>{this.props.color1}</p>
+                    <p> Jakaś treść: {Math.random() * 100}</p>
+                </div>
+            
+                );
+            }
+        }
+        class Card extends React.Component{
+            render(){
+                let cardStyle = {
+                    width: 150,
+                    height: 200,
+                    backgroundColor: "#FFF",
+                    padding: 10,
+                    margin: 10,
+                    border: "1px solid #666",
+                    boxShadow: "0px 0px 5px #666",
+                };
+                return(
+                    <div style={cardStyle}>
+                        <Square color1={this.props.color1}/>
+                        <Label color1={this.props.color1}/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+               <Card color1="#FF6663"/>
+               <Card color1="#FFA737"/>
+            </div>,destination
+        );
+    </script>
+    <div id="kontener"></div>
+</body>
+</html>

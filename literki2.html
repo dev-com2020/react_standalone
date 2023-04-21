@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>React standalone ver 2</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<style>
+    #kontener {
+        padding: 50px;
+        background-color: #FFF;
+    }
+</style>
+</head>
+<body>
+    <script type="text/babel">
+        let destination = document.querySelector("#kontener");
+
+        class Literka extends React.Component {
+            render() {
+                let letterStyle = {
+                    display: "inline-block",
+                    fontSize: 32,
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    fontFamily: "monospace",
+                    display: "inline-block",
+                    backgroundColor: this.props.bgcolor,
+                    padding: 10,
+                    margin: 10,
+                    border: "1px solid #000"
+                };
+                return(
+                <div style={letterStyle}>{this.props.children}</div>
+            );
+        }
+        }
+        ReactDOM.render(
+            <div>
+                <Literka bgcolor="#58B3FF">T</Literka>
+                <Literka bgcolor="#FF605F">O</Literka>
+                <Literka bgcolor="#49DD8E">M</Literka>
+                <Literka bgcolor="#58B3FF">E</Literka>
+                <Literka>K</Literka>
+            </div>,destination
+        );
+    </script>
+    <div id="kontener"></div>
+</body>
+</html>
